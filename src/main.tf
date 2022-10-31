@@ -1,6 +1,3 @@
-output "hello_world" {
-  value = "Hello, World!"
-}
 resource "aws_instance" "ec2-prod" {
   ami = data.aws_ami.ami.id
   instance_type = "t2.micro"
