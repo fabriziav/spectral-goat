@@ -1,18 +1,30 @@
-name: Main
+# This is a basic workflow to help you get started with Actions.
+
+name: Check Point CloudGuard ShiftLeft Assessment
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
   push:
-    branches: [ main ]
-    
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+#defines Spectral environment
 env:
   SPECTRAL_DSN: ${{ secrets.SPECTRAL_DSN }}
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   scan:
     runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: Install and run Spectral CI
       uses: spectralops/spectral-github-action@v2
       with:
         spectral-dsn: ${{ env.SPECTRAL_DSN }}
         spectral-args: scan --ok --include-tags base,audit,iac
+        continue-on-error: true
