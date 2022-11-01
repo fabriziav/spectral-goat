@@ -27,4 +27,3 @@ jobs:
       with:
         spectral-dsn: ${{ env.SPECTRAL_DSN }}
         spectral-args: scan --ok --include-tags base,audit,iac
-        continue-on-error: true
