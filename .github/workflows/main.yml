@@ -26,4 +26,4 @@ jobs:
       uses: spectralops/spectral-github-action@v2
       with:
         spectral-dsn: ${{ env.SPECTRAL_DSN }}
-        spectral-args: scan --ok --include-tags base,audit,iac
+        spectral-args: scan --include-tags base,audit,iac
