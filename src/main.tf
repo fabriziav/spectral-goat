@@ -5,7 +5,6 @@ resource "aws_instance" "ec2-prod" {
   key_name = aws_key_pair.ssh.key_name
   vpc_security_group_ids = [aws_security_group.prov_fw.id]
 
-  
   connection {
     type = "ssh"
     host = aws_instance.ec2-prod.public_ip
