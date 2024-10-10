@@ -50,3 +50,4 @@ resource "aws_security_group" "prov_fw" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
